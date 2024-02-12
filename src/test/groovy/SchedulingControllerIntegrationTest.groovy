@@ -90,7 +90,14 @@ class SchedulingControllerIntegrationTest extends Specification {
                         timeslot.plusHours(8)
                 )
         )
+    }
 
+    def 'createMeeting should throw IllegalArgumentException - not full hour is passed'() {
+        when:
+        schedulingController.createMeeting(Set.of(person1.id(), person2.id(), person3.id()), LocalDateTime.now().withMinute(5))
+
+        then:
+        thrown(IllegalArgumentException)
     }
 
     def 'createMeeting  should throw IllegalArgumentException - passed null timeslot'() {

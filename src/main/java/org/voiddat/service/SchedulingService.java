@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class SchedulingService {
     public Meeting createMeeting(Set<Long> personIds, LocalDateTime timeslot) {
-        if (timeslot == null || this.isNotWholeHour(timeslot)) {
+        if (this.isNotWholeHour(timeslot)) {
             throw new IllegalArgumentException("Error: Please provide only full hours");
         }
 
